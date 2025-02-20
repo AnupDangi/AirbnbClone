@@ -1,0 +1,103 @@
+<% layout("/layouts/boilterplate") %>
+    
+        <!-- <form action="/listings/new" method="get">
+            <button>Create New Listings</button>
+        </form> -->
+        
+
+<!-- Filters Section - Sticks below the navbar -->
+<div id="filters">
+  
+    <div class="filter">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending </p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms </p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-star"></i></div>
+        <p>Icons </p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-face-surprise"></i></div>
+        <p>Omg</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountain</p>
+    </div>
+   
+    <div class="filter">
+        <div><i class="fa-solid fa-tree"></i></div>
+        <p>Tree</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-snowman"></i></div>
+        <p>Arctic</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-binoculars"></i></div>
+        <p>Amazing Views </p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-cow"></i></div>
+        <p>Farms</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Pools </p>
+    </div>
+  <!-- <div class="filter d-inline-flex border border-secondary rounded-2 p-1 h-10"> -->
+    <div class="taxes tax-toggler">
+      <div class="form-check form-switch form-check-reverse">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Display Total After Taxes </label>
+      </div>
+    </div>
+  </div>
+  
+    <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 cols-xs-1 mt-3">
+        <% for(let listing of allListings){ %>
+            <a href="/listings/<%=listing._id%>" class="listing-link">
+            <div class="card col listing-card" data-price="<%= listing.price %>">
+                <img src="<%=listing.image.url%>" class="card-img-top" 
+                    alt="listing_image" 
+                    style="height: 20rem;" > 
+        
+                    <div class="card-img-overlay"></div>
+        
+                <div class="card-body">
+                  <p class="card-text">
+                    <b><%=listing.title%></b> <br>
+                    &#8377; <span class="price"><%= listing.price.toLocaleString("en-IN") %></span>/night
+                  </p>
+                  <i class="tax-info" style="display: none;"> &nbsp; &nbsp;+18% GST</i>
+                </div>
+              </div>
+            </a>
+        <% } %>
+        </div>
+        
+        <script>
+          document.getElementById("flexSwitchCheckDefault").addEventListener("click", () => {
+              let taxInfoElements = document.getElementsByClassName("tax-info");
+              let priceElements = document.getElementsByClassName("price");
+        
+              for (let i = 0; i < priceElements.length; i++) {
+                  let card = priceElements[i].closest(".card");
+                  let basePrice = parseFloat(card.dataset.price);
+                  let priceWithTax = (basePrice * 1.18).toLocaleString("en-IN");
+        
+                  if (taxInfoElements[i].style.display !== "inline") {
+                      priceElements[i].innerText = priceWithTax;
+                      taxInfoElements[i].style.display = "inline";
+                  } else {
+                      priceElements[i].innerText = basePrice.toLocaleString("en-IN");
+                      taxInfoElements[i].style.display = "none";
+                  }
+              }
+          });
+        </script>
+        
