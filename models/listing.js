@@ -41,10 +41,6 @@ const listingSchema=new Schema({
           required: true
         }
       },
-      category:{
-        type:String,
-        enum:["mountain,Trending,Arctic,Rooms,Arctic,Mountain,Tree,Amazing Views,Farms,Pools"],
-      },
 });
 
 listingSchema.post("findOneAndDelete",async(listing)=>{

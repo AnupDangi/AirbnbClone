@@ -6,8 +6,11 @@
         
 
 <!-- Filters Section - Sticks below the navbar -->
-<div id="filters">
-  
+<div class="container-fluid filters">
+    <button class="navbar-toggler d-md-none me-3" type="button" data-bs-toggle="collapse" data-bs-target="#filtersMenu">
+        <i class="fa-solid fa-filter" style=" font-size: 2rem;"></i>
+    </button>
+    <div id="filtersMenu" class="collapse d-md-flex flex-wrap justify-content-center">    
     <div class="filter">
         <div><i class="fa-solid fa-fire"></i></div>
         <p>Trending </p>
@@ -50,14 +53,14 @@
         <p>Pools </p>
     </div>
   <!-- <div class="filter d-inline-flex border border-secondary rounded-2 p-1 h-10"> -->
-    <div class="taxes tax-toggler">
+    <div class="taxes tax-toggler" id="taxes">
       <div class="form-check form-switch form-check-reverse">
         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
         <label class="form-check-label" for="flexSwitchCheckDefault">Display Total After Taxes </label>
       </div>
     </div>
   </div>
-  
+</div>
     <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 cols-xs-1 mt-3">
         <% for(let listing of allListings){ %>
             <a href="/listings/<%=listing._id%>" class="listing-link">
@@ -81,7 +84,11 @@
         </div>
         
         <script>
-          document.getElementById("flexSwitchCheckDefault").addEventListener("click", () => {
+          document.getElementById("taxes").addEventListener("click", () => {
+
+            const checkbox = document.getElementById("flexSwitchCheckDefault");
+            checkbox.checked = !checkbox.checked;
+
               let taxInfoElements = document.getElementsByClassName("tax-info");
               let priceElements = document.getElementsByClassName("price");
         

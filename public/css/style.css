@@ -126,12 +126,12 @@ body{
     top: 0;
     z-index: 1000; /* Ensure it's above other elements */
 }
-
+/* 
 /* Filters stay just below the navbar */
 #filters {
     width: 95vw;
     position: sticky;
-    top: 56px; /* Adjust this based on your navbar's height */
+    top: 40px; /* Adjust this based on your navbar's height */
     background-color: white; /* Ensures it doesn't become transparent */
     z-index: 999; /* Just below navbar */
     border-bottom: 1px solid #ddd;
@@ -143,7 +143,7 @@ body{
 .filter{
     position: sticky;
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-right: 1rem;
     margin-left: 1rem;
     opacity: 0.7;
@@ -153,23 +153,32 @@ body{
     cursor: pointer;
 }
 .filter p{
-    font-size: 0.8rem;
+    font-size: 0.6rem;
 }
 
-.taxes{
-        border: 1px solid #ccc; /* Light gray border */
-        border-radius: 8px; /* Smooth rounded corners */
-        padding: 10px; /* Add some space inside */
-        display: flex;
-        align-items: center;
-        width: fit-content; /* Shrink-wrap around content */
-        height: fit-content;
-        align-content: center;
-        text-align: center;
-        margin-top: 1.6rem;
-        font-size: 0.8rem;
+.taxes {
+    border: 1px solid #ccc;
+    border-radius: 8px; 
+    padding: 5px; 
+    display: inline-flex; 
+    align-content: center;
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    font-size: 0.6rem; 
+    margin-left: 1.5rem;
+    margin-top: 1.1rem; 
+    height: fit-content;
+    cursor: pointer;
 }
 
 .tax-info{
     display: none;
+} 
+
+
+@media (min-width: 768px) {
+    #filters {
+        display: flex !important;
+    }
 }

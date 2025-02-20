@@ -35,6 +35,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //create mongodb connection
 const dbUrl=process.env.ATLASDB_URL;
+
 // console.log(dbUrl);
 
 main().then(()=>{
@@ -123,6 +124,10 @@ app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
 
 
+app.get("/",async (req,res)=>{
+    res.redirect("/listings");
+});
+
 //random route page not found 
 app.all("*",(req,res,next)=>{
     next(new ExpressError(404,"Page not found"));
@@ -142,7 +147,6 @@ app.use((err,req,res,next)=>{
 // app.use((err,req,res,next)=>{
 //     res.send("Something went wrong");
 // });
-
 
 app.listen(8080,()=>{
     console.log("server is listening to 8080");

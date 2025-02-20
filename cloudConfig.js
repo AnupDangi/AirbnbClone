@@ -15,6 +15,6 @@ const storage = new CloudinaryStorage({
       folder: 'wanderLust_DEV',
       allowedFormats: ['png',"jpeg","jpg"],//supports promises as well
     },
-  });
+});
 
 module.exports={cloudinary,storage};
