@@ -1,6 +1,6 @@
 # Airbnb Clone
 
-# Live on: https://aribnbclone.onrender.com/
+# Live on: https://airbnbclone-244q.onrender.com/listings
 
 ## Introduction
 This project is an **Airbnb Clone** built using **Node.js, Express, MongoDB, and EJS**. The web application allows users to browse, search, and list rental properties. It also features user authentication, search filters, and a responsive UI.
